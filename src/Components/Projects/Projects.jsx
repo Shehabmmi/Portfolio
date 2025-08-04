@@ -1,5 +1,5 @@
 import React from 'react'
-import freshCart from '../../assets/freshCart.png'
+import freshCartImage from '../../assets/freshCart.png'
 
 export default function Projects() {
   const projects = [
@@ -8,7 +8,7 @@ export default function Projects() {
       subtitle: "React E-commerce App",
       description: "A fully responsive e-commerce platform built with React, JWT, React Router, and more. Features product browsing, user authentication, and secure checkout.",
       technologies: ["React", "JWT", "React Router", "CSS3", "JavaScript"],
-      image: "/api/placeholder/400/250",
+      image: freshCartImage,
       github: "https://github.com/Shehabmmi",
       featured: true
     },
@@ -62,10 +62,18 @@ export default function Projects() {
               )}
               
               <div className="relative overflow-hidden">
-                <div className="w-full h-52 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <i className="fas fa-code text-6xl text-white opacity-50"></i>
-                </div>
-                <div className="absolute bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                {project.image.startsWith('/api/placeholder') ? (
+                  <div className="w-full h-52 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i className="fas fa-code text-6xl text-white opacity-50"></i>
+                  </div>
+                ) : (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-52 object-cover"
+                  />
+                )}
+                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
                   <a 
                     href={project.github} 
                     target="_blank" 
